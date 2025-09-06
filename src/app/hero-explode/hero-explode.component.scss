@@ -1,0 +1,91 @@
+:host { display: block; }
+
+.panel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #000000;
+}
+
+/* Canvas scales to container; we draw at devicePixelRatio for crispness */
+.seq {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  // transform: scale(var(--zoom, 1));
+  transform: scale(calc(var(--intro-zoom, 1) * var(--scroll-zoom, 1)));
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+}
+
+.hud {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  background: rgba(10,10,10,.6);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: .5rem .75rem;
+  border-radius: .75rem;
+  backdrop-filter: blur(6px);
+  font-size: .9rem;
+  opacity: .85;
+}
+
+/* Reduced motion: we’ll just draw the last frame (handled in TS) */
+@media (prefers-reduced-motion: reduce) {
+  .seq { transform: none !important; }
+}
+
+
+
+.below {
+  background: #000;
+  padding: 8vh 0;           /* breathing room above/below */
+  display: grid;
+  place-items: center;
+}
+
+/* Responsive image below the canvas */
+.below-img {
+  max-width: min(1200px, 92vw);
+  height: auto;
+  display: block;
+}
+
+
+
+
+.callouts-section { background:#000; padding:16vh 0; display:grid; place-items:center; }
+// .callouts-figure  { position:relative; width:min(1100px,92vw);}
+.callouts-figure  { position:relative; width:min(1100px,92vw);}
+
+.putter { width:60%; height:auto; display:block; margin: 0 auto;}
+
+/* Overlay sits exactly on top of the putter image */
+.callout-overlay{
+  position:absolute; inset:0;
+  width:100%; 
+  height:100%;
+  object-fit: contain;
+  pointer-events:none;
+
+  /* Turn black lines -> white, push contrast, and ignore (now-black) bg */
+  filter: invert(1) grayscale(1) contrast(200%) brightness(170%);
+  mix-blend-mode: screen;
+
+  /* reveal animation (we'll trigger via GSAP) */
+  opacity: 0; 
+  // transform: translateY(8px);
+          /* scale from the image’s top-left */
+
+  transform-origin: center; 
+  transform: translate(-4px, -30px) scale(3); /* ↑ move up 40px; tweak */
+}
