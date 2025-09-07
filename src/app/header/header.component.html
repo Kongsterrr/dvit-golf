@@ -1,0 +1,39 @@
+<header class="site-header" role="banner">
+    <div class="row">
+      <!-- Left: logo -->
+      <a class="brand" href="/" aria-label="Home">
+        <img src="assets/images/logo.png" alt="DVIT logo" class="logo" />
+        <span class="wordmark">DVIT</span>
+      </a>
+  
+      <!-- Center: primary nav -->
+      <nav class="primary" aria-label="Primary">
+        <a href="#" (click)="closeMenu()">Putters</a>
+        <a href="#" (click)="closeMenu()">The App</a>
+        <a href="#" (click)="closeMenu()">About</a>
+      </nav>
+  
+      <!-- Right: icons -->
+      <div class="actions">
+        <button class="icon-btn" aria-label="Account">
+          <!-- user icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Cart">
+          <!-- cart icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm10 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2ZM7.2 14h9.45a2 2 0 0 0 1.94-1.52l1.27-5.08A1 1 0 0 0 18.9 6H6.34L5.93 4.65A2 2 0 0 0 4 3.3H3v2h1l2.7 8.29A2 2 0 0 0 8.6 15h9.8v-2H7.2Z"/></svg>
+        </button>
+        <button class="icon-btn hamburger" aria-label="Menu" (click)="toggleMenu()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile drawer -->
+    <nav class="drawer" [class.open]="menuOpen" aria-label="Mobile">
+      <a href="#" (click)="closeMenu()">Putters</a>
+      <a href="#" (click)="closeMenu()">The App</a>
+      <a href="#" (click)="closeMenu()">About</a>
+    </nav>
+  </header>
+  

@@ -46,24 +46,24 @@
 
 
 
-.below {
-  background: #000;
-  padding: 8vh 0;           /* breathing room above/below */
-  display: grid;
-  place-items: center;
-}
+// .below {
+//   background: #000;
+//   padding: 8vh 0;           /* breathing room above/below */
+//   display: grid;
+//   place-items: center;
+// }
 
-/* Responsive image below the canvas */
-.below-img {
-  max-width: min(1200px, 92vw);
-  height: auto;
-  display: block;
-}
-
-
+// /* Responsive image below the canvas */
+// .below-img {
+//   max-width: min(1200px, 92vw);
+//   height: auto;
+//   display: block;
+// }
 
 
-.callouts-section { background:#000; padding:16vh 0; display:grid; place-items:center; }
+
+
+.callouts-section { background:#000; padding:30vh 0; display:grid; place-items:center; }
 // .callouts-figure  { position:relative; width:min(1100px,92vw);}
 .callouts-figure  { position:relative; width:min(1100px,92vw);}
 

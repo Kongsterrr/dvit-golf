@@ -134,8 +134,8 @@ export class HeroExplodeComponent implements AfterViewInit, OnDestroy {
           // this.gsap.set(document.documentElement as any, { '--zoom': 1 + this.ZOOM_DELTA * p });
           this.gsap.set(document.documentElement as any, { '--scroll-zoom': 1 + this.ZOOM_DELTA * p });
         },
-        onEnter:     () => this.drawFrame(this.FRAME_END),
-        onEnterBack: () => this.drawFrame(this.FRAME_START),
+        // onEnter:     () => this.drawFrame(this.FRAME_END),
+        // onEnterBack: () => this.drawFrame(this.FRAME_START),
       });
 
 
@@ -303,11 +303,11 @@ export class HeroExplodeComponent implements AfterViewInit, OnDestroy {
 
   // per-frame overrides (frameNo: scale). Example values:
   private readonly FRAME_SCALES: Record<number, number> = {
-    1: 0.6,
-    2: 0.6,
-    3: 0.61,
-    4: 0.65,
-    5: 0.75,
+    1: 0.5,
+    2: 0.5,
+    3: 0.51,
+    4: 0.55,
+    5: 0.65,
   };
 
   private getScaleForFrame(frameNum: number): number {

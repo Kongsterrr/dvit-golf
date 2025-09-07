@@ -1,0 +1,76 @@
+:host { display: contents; } /* let header sit at top level */
+
+:root { --header-h: 64px; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  height: var(--header-h);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.row {
+  max-width: min(1200px, 92vw);
+  margin: 0 auto;
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;   /* left | center | right */
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; color: #f3f3f3;
+}
+.logo { width: 100px; height: 50px; object-fit: contain; }
+.wordmark { font-weight: 700; letter-spacing: .06em; font-size: 14px; }
+
+.primary {
+  display: flex; justify-content: center; gap: 26px;
+  a {
+    color: #eaeaea; text-decoration: none; font-size: 14px; opacity: .9;
+    padding: 6px 4px; border-radius: 8px;
+    transition: opacity .2s ease, background-color .2s ease;
+    &:hover { opacity: 1; background: rgba(255,255,255,.06); }
+  }
+}
+
+.actions {
+  display: flex; justify-content: flex-end; align-items: center; gap: 8px;
+}
+
+.icon-btn {
+  display: inline-grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: transparent; border: 1px solid rgba(255,255,255,.08);
+  color: #eaeaea; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  svg { width: 18px; height: 18px; fill: currentColor; }
+  &:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+}
+
+/* Hamburger hidden on desktop */
+.hamburger { display: none; }
+
+/* Mobile drawer (below header) */
+.drawer {
+  display: none;
+  background: rgba(0,0,0,.9);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 10px 16px 14px;
+  a {
+    display: block; color: #eee; text-decoration: none;
+    padding: 10px 8px; border-radius: 10px;
+    &:hover { background: rgba(255,255,255,.06); }
+  }
+  &.open { display: block; }
+}
+
+@media (max-width: 900px) {
+  .row { grid-template-columns: 1fr auto 1fr; }
+  .primary { display: none; }      /* hide center nav */
+  .hamburger { display: inline-grid; }
+}
