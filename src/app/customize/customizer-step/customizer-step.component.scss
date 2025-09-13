@@ -1,0 +1,160 @@
+:root { --header-h: 64px; }
+
+.step-shell{
+  display:grid;
+  grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+  gap: 48px;
+
+  max-width: min(1320px, 94vw);
+  margin-inline: auto;
+
+  /* fill viewport under sticky header */
+  min-height: calc(100vh - var(--header-h));
+  padding-block: 7vh;
+  align-items: start;
+
+  /* bigger, cleaner base type */
+  font-size: clamp(16px, 1.05vw + .25rem, 20px);
+  color:#eaeaea;
+}
+
+/* mobile */
+@media (max-width: 960px){
+  .step-shell{
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+    padding-block: 6vh 10vh;
+  }
+}
+
+/* ---------- LEFT: preview ---------- */
+.preview { align-self: start; }
+
+.preview .frame{
+  position: relative;
+  width: 100%;
+
+  /* Taller card */
+  aspect-ratio: 16 / 10;
+  min-height: clamp(900px, 64vh, 760px);
+
+  /* Glass-card vibe */
+  background: radial-gradient(120% 140% at 50% 0%, rgba(255,255,255,.06), rgba(255,255,255,.02) 60%);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.03);
+
+  /* knobs to keep the putter image relatively small + nudgable */
+  --art-scale: .7;   /* ↓ make smaller (e.g. .7) or bigger (e.g. .9) */
+  --art-translate-y: -10px; /* fine vertical trim */
+}
+
+/* base/overlay art always centered but can be scaled/offset via vars */
+.base, .overlay{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  pointer-events: none; user-select: none; -webkit-user-drag: none;
+
+  transform-origin: center;
+  transform: translateY(var(--art-translate-y)) scale(var(--art-scale));
+  will-change: transform;
+}
+
+/* label under the card */
+.caption{
+  margin-top: 14px;
+  .title{
+    font-size: clamp(18px, 1.2vw + .6rem, 28px);
+    font-weight: 750;
+    letter-spacing: .01em;
+  }
+  .sub{
+    opacity:.75; margin-top: 6px;
+  }
+}
+
+/* ---------- RIGHT: panel ---------- */
+.panel{
+  align-self: start;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+  height: fit-content;
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+}
+
+.list{
+  display:grid; gap: 12px;
+}
+
+/* panel title/sub for better hierarchy */
+.list .title{
+  font-size: clamp(20px, 1.1vw + .7rem, 30px);
+  font-weight: 780;
+  letter-spacing: .01em;
+}
+.list .sub{
+  opacity:.75; margin: 4px 0 10px;
+}
+
+/* option cards */
+.card{
+  width:100%; text-align:left;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  color:#eaeaea;
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 20px;
+
+  /* bigger text inside cards */
+  .name{ font-weight: 650; font-size: 1.05em; }
+  .meta{ opacity:.82; font-size: .95em; margin-top: 6px; }
+
+  transition:
+    transform .06s ease,
+    border-color .2s ease,
+    background-color .2s ease,
+    box-shadow .2s ease;
+
+  &:hover{
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.18);
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+    transform: translateY(-1px);
+  }
+  &.active{
+    border-color: #fff;
+    background: rgba(255,255,255,.14);
+    box-shadow: 0 10px 28px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.18) inset;
+  }
+}
+
+/* footer actions */
+.actions{
+  display:flex; justify-content: space-between; align-items:center;
+  margin-top: 16px;
+
+  a{ text-decoration: none; }
+
+  .ghost{
+    padding: 12px 16px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.16);
+    color:#eaeaea; background: transparent;
+    font-weight: 600;
+    &:hover{ background: rgba(255,255,255,.08); }
+  }
+  .next{
+    padding: 12px 18px; border-radius: 12px;
+    background: #fff; color: #000; font-weight: 800;
+    letter-spacing: .01em;
+    box-shadow: 0 10px 22px rgba(255,255,255,.18);
+    &:hover{ filter: brightness(.96); }
+    &:active{ transform: translateY(1px); }
+  }
+}

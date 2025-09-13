@@ -1,0 +1,47 @@
+<section class="step-shell">
+    <div class="preview">
+      <div class="frame"
+           [style.--art-scale]="(config().artScale ?? 0.68)"
+           [style.--art-offset-y.px]="(config().artOffsetY ?? -8)">
+        <img *ngIf="config().base" class="base" [src]="config().base" alt="Putter" />
+        <img class="overlay" [src]="selected().overlay" [alt]="selected().name" />
+      </div>
+      <!-- <div class="caption">
+        <div class="title">{{ config().title }}</div>
+        <div class="sub">{{ config().sub }}</div>
+      </div> -->
+    </div>
+  
+    <div class="panel">
+      <div class="list">
+        <div class="title">{{ config().title }}</div>
+        <div class="sub">{{ config().sub }}</div>
+  
+        <button class="card"
+                *ngFor="let opt of config().options"
+                type="button"
+                [class.active]="opt.id === selectedId()"
+                (click)="select(opt.id)">
+          <div class="name">{{ opt.name }}</div>
+          <div class="meta">${{ opt.price }}</div>
+        </button>
+      </div>
+  
+      <div class="actions">
+        <a *ngIf="backTo()"
+           [routerLink]="['/customize', backTo()]"
+           class="ghost"
+           [attr.aria-label]="'Back to ' + backTitle()">
+          Back: {{ backTitle() }}
+        </a>
+  
+        <a *ngIf="nextTo()"
+           [routerLink]="['/customize', nextTo()]"
+           class="next"
+           [attr.aria-label]="'Next: ' + nextTitle()">
+          Next: {{ nextTitle() }}
+        </a>
+      </div>
+    </div>
+  </section>
+  
