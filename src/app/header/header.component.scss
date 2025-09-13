@@ -74,3 +74,18 @@
   .primary { display: none; }      /* hide center nav */
   .hamburger { display: inline-grid; }
 }
+
+
+.buy-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    height:36px; padding:0 14px; border-radius:10px;
+    background:#fff; color:#000; text-decoration:none; font-weight:600;
+    border:1px solid #fff;
+    transition: transform .06s ease, box-shadow .2s ease, opacity .2s ease;
+    box-shadow: 0 2px 12px rgba(255,255,255,.12);
+    &:hover{ box-shadow: 0 4px 16px rgba(255,255,255,.2); }
+    &:active{ transform: translateY(1px) scale(.99); }
+}
+
+.drawer .buy-btn.mobile{ display:block; margin-top:8px; }
+  
